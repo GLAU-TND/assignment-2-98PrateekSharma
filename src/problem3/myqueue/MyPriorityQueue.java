@@ -11,4 +11,10 @@ import problem3.node.Node;
 public class MyPriorityQueue {
     private Node front;
     private Node back;
+
+
+    public boolean isEmpty() {
+        return front == null;
+    }
+
 }
