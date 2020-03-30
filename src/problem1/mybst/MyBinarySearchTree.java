@@ -1,19 +1,24 @@
-/*
- *  Created by IntelliJ IDEA.
- *  User: Vaibhav
- *  Date: 23-Mar-20
- *  Time: 7:17 PM
- */
 package problem1.mybst;
-
+// to implement BinarySearchTree
 import problem1.node.TreeNode;
 
 import java.util.LinkedList;
 import java.util.Queue;
 
-// to implement BinarySearchTree
+
 public class MyBinarySearchTree {
     private TreeNode root;
+
+    // To insert a new Node in Tree.
+    public void insert(int value) {
+        TreeNode node = new TreeNode(value);
+        if (root == null) {
+            root = node;
+            //System.out.println("root Node inserted");
+        } else {
+            insertHelper(root, value);
+        }
+    }
 
     private void insertHelper(TreeNode current, int value) {
         TreeNode node = new TreeNode(value);
@@ -39,64 +44,6 @@ public class MyBinarySearchTree {
         return;
     }
 
-    // To insert a new Node in Tree.
-    public void insert(int value) {
-        TreeNode node = new TreeNode(value);
-        if (root == null) {
-            root = node;
-            //System.out.println("root Node inserted");
-        } else {
-            public TreeNode search ( int value){
-                if (isEmpty()) {
-                    //System.out.println("Tree is Empty");
-                    return null;
-                }
-                return search(root, value);
-            }
-
-            private TreeNode search (TreeNode current,int value){
-                if (current.getData() == value) {
-                    return current;
-                } else if (value < current.getData()) {
-                    if (current.getLeftChild() != null) {
-                        return search(current.getLeftChild(), value);
-                    }
-                } else {
-                    if (current.getRightChild() != null) {
-                        return search(current.getRightChild(), value);
-                    }
-                }
-                return null;
-            }
-
-            public TreeNode preOrderSuccessor ( int value){
-                TreeNode node = search(value);
-                if (node == null) {
-                    return null;
-                }
-                if (node.getLeftChild() != null) {
-                    return node.getLeftChild();
-                } else if (node.getRightChild() != null) {
-                    return node.getRightChild();
-                } else {
-                    TreeNode temp = node.getParent();
-                    while (temp != null) {
-                        if (value < temp.getData() && temp.getRightChild() != null) {
-                            break;
-                        }
-                        temp = temp.getParent();
-                    }
-                    return temp != null ? temp.getRightChild() : null;
-                }
-            }
-
-            public TreeNode getRoot () {
-                return root;
-            }
-            insertHelper(root, value);
-        }
-    }
-
     public void ourTraversal() {
         if (isEmpty()) {
             System.out.println("Tree is empty");
@@ -111,53 +58,6 @@ public class MyBinarySearchTree {
         }
         if (current.getRightChild() != null) {
             rightQ.add(current.getRightChild());
-            public TreeNode search ( int value){
-                if (isEmpty()) {
-                    //System.out.println("Tree is Empty");
-                    return null;
-                }
-                return search(root, value);
-            }
-
-            private TreeNode search (TreeNode current,int value){
-                if (current.getData() == value) {
-                    return current;
-                } else if (value < current.getData()) {
-                    if (current.getLeftChild() != null) {
-                        return search(current.getLeftChild(), value);
-                    }
-                } else {
-                    if (current.getRightChild() != null) {
-                        return search(current.getRightChild(), value);
-                    }
-                }
-                return null;
-            }
-
-            public TreeNode preOrderSuccessor ( int value){
-                TreeNode node = search(value);
-                if (node == null) {
-                    return null;
-                }
-                if (node.getLeftChild() != null) {
-                    return node.getLeftChild();
-                } else if (node.getRightChild() != null) {
-                    return node.getRightChild();
-                } else {
-                    TreeNode temp = node.getParent();
-                    while (temp != null) {
-                        if (value < temp.getData() && temp.getRightChild() != null) {
-                            break;
-                        }
-                        temp = temp.getParent();
-                    }
-                    return temp != null ? temp.getRightChild() : null;
-                }
-            }
-
-            public TreeNode getRoot () {
-                return root;
-            }
         }
         if (leftQ.isEmpty() || rightQ.isEmpty()) {
             counter++;
