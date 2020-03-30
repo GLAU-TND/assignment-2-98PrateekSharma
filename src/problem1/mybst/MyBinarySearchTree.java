@@ -102,6 +102,43 @@ public class MyBinarySearchTree {
         System.out.println("Count of Nodes who doesn't have Left child = " + counter);
     }
 
+    public void postOrderTraversal() {
+        if (isEmpty()) {
+            System.out.println("Tree is Empty");
+        } else {
+            postOrderTraversal(root);
+        }
+    }
+
+    private void postOrderTraversal(TreeNode current) {
+        if (current.getLeftChild() != null) {
+            postOrderTraversal(current.getLeftChild());
+        }
+        if (current.getRightChild() != null) {
+            postOrderTraversal(current.getRightChild());
+        }
+        System.out.println("data = " + current.getData());
+    }
+
+    public void preOrderTraversal() {
+        if (isEmpty()) {
+            System.out.println("tree is empty");
+        } else {
+            preOrderTraversal(root);
+        }
+    }
+
+    private void preOrderTraversal(TreeNode current) {
+        System.out.println("data = " + current.getData());
+        if (current.getLeftChild() != null) {
+            preOrderTraversal(current.getLeftChild());
+        }
+        if (current.getRightChild() != null) {
+            preOrderTraversal(current.getRightChild());
+        }
+    }
+
+
     public boolean isEmpty() {
         return root == null;
     }
