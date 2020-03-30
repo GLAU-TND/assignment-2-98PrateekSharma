@@ -46,6 +46,53 @@ public class MyBinarySearchTree {
             root = node;
             //System.out.println("root Node inserted");
         } else {
+            public TreeNode search ( int value){
+                if (isEmpty()) {
+                    //System.out.println("Tree is Empty");
+                    return null;
+                }
+                return search(root, value);
+            }
+
+            private TreeNode search (TreeNode current,int value){
+                if (current.getData() == value) {
+                    return current;
+                } else if (value < current.getData()) {
+                    if (current.getLeftChild() != null) {
+                        return search(current.getLeftChild(), value);
+                    }
+                } else {
+                    if (current.getRightChild() != null) {
+                        return search(current.getRightChild(), value);
+                    }
+                }
+                return null;
+            }
+
+            public TreeNode preOrderSuccessor ( int value){
+                TreeNode node = search(value);
+                if (node == null) {
+                    return null;
+                }
+                if (node.getLeftChild() != null) {
+                    return node.getLeftChild();
+                } else if (node.getRightChild() != null) {
+                    return node.getRightChild();
+                } else {
+                    TreeNode temp = node.getParent();
+                    while (temp != null) {
+                        if (value < temp.getData() && temp.getRightChild() != null) {
+                            break;
+                        }
+                        temp = temp.getParent();
+                    }
+                    return temp != null ? temp.getRightChild() : null;
+                }
+            }
+
+            public TreeNode getRoot () {
+                return root;
+            }
             insertHelper(root, value);
         }
     }
@@ -64,6 +111,53 @@ public class MyBinarySearchTree {
         }
         if (current.getRightChild() != null) {
             rightQ.add(current.getRightChild());
+            public TreeNode search ( int value){
+                if (isEmpty()) {
+                    //System.out.println("Tree is Empty");
+                    return null;
+                }
+                return search(root, value);
+            }
+
+            private TreeNode search (TreeNode current,int value){
+                if (current.getData() == value) {
+                    return current;
+                } else if (value < current.getData()) {
+                    if (current.getLeftChild() != null) {
+                        return search(current.getLeftChild(), value);
+                    }
+                } else {
+                    if (current.getRightChild() != null) {
+                        return search(current.getRightChild(), value);
+                    }
+                }
+                return null;
+            }
+
+            public TreeNode preOrderSuccessor ( int value){
+                TreeNode node = search(value);
+                if (node == null) {
+                    return null;
+                }
+                if (node.getLeftChild() != null) {
+                    return node.getLeftChild();
+                } else if (node.getRightChild() != null) {
+                    return node.getRightChild();
+                } else {
+                    TreeNode temp = node.getParent();
+                    while (temp != null) {
+                        if (value < temp.getData() && temp.getRightChild() != null) {
+                            break;
+                        }
+                        temp = temp.getParent();
+                    }
+                    return temp != null ? temp.getRightChild() : null;
+                }
+            }
+
+            public TreeNode getRoot () {
+                return root;
+            }
         }
         if (leftQ.isEmpty() || rightQ.isEmpty()) {
             counter++;
