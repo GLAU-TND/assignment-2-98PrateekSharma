@@ -101,4 +101,8 @@ public class MyBinarySearchTree {
         }
         System.out.println("Count of Nodes who doesn't have Left child = " + counter);
     }
+
+    public boolean isEmpty() {
+        return root == null;
+    }
 }
